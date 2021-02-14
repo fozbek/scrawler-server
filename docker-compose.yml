@@ -1,0 +1,10 @@
+version: '3.7'
+
+services:
+  app:
+    build: .
+    restart: unless-stopped
+    volumes:
+      - ./:/var/www/html
+    ports:
+      - 80:80
