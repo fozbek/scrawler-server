@@ -19,6 +19,7 @@ class ScrapingTest extends TestCase
         $postData = [
             'url' => $content,
             'template' => json_encode($template),
+            'is_html' => true,
         ];
 
         return $this->post('/', $postData);
@@ -38,7 +39,7 @@ class ScrapingTest extends TestCase
     {
         $response = $this->makeRequest($this->htmlContent, [
             'li-list' => [
-                'selector' => '.container ul li',
+                'list-selector' => '.container ul li',
                 'content' => [
                     'a-href' => 'a@href'
                 ]
