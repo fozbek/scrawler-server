@@ -24,22 +24,22 @@ Put they key to APP_KEY and run
 
 ### Usage
 
-###Parameters
+### Parameters
 - url
 - template
 - is_html
 
-####url  (string)
+#### url  (string)
 put url or html content if is_html is true
 
-####template  (string)
+#### template  (string)
 Schema as json. For more information https://github.com/fozbek/scrawler
 
-####is_html (bool)
+#### is_html (bool)
 set true if url contains html content
 
 
-###Example
+### Example
 
     curl --location --request POST 'http://localhost/' \
         --form 'url="https://news.ycombinator.com/"' \
@@ -53,7 +53,7 @@ Output
 }
 ```
 
-###Example 2
+### Example 2
 
     curl --location --request POST 'http://localhost/' \
     --form 'url="https://news.ycombinator.com/"' \
