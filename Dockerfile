@@ -5,7 +5,7 @@
 #------------- Setup Environment -------------------------------------------------------------
 
 # Pull base image
-FROM ubuntu:18.04
+FROM ubuntu:22.04
 
 # Install common tools
 RUN apt-get update
@@ -30,28 +30,22 @@ WORKDIR /var/www/html
 RUN LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/php
 RUN apt update
 RUN apt-get install -y \
-    php7.4-fpm \
-    php7.4-common \
-    php7.4-curl \
-    php7.4-mysql \
-    php7.4-mbstring \
-    php7.4-json \
-    php7.4-xml \
-    php7.4-bcmath
+    php8.2-fpm \
+    php8.2-common \
+    php8.2-curl \
+    php8.2-mysql \
+    php8.2-mbstring \
+    php8.2-json \
+    php8.2-xml \
+    php8.2-bcmath
 
 #------------- FPM & Nginx configuration ----------------------------------------------------
 
 # Config fpm to use TCP instead of unix socket
-ADD docker/www.conf /etc/php/7.4/fpm/pool.d/www.conf
+ADD docker/www.conf /etc/php/8.2/fpm/pool.d/www.conf
 RUN mkdir -p /var/run/php
 
 # Install Nginx
-RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys ABF5BD827BD9BF62
-RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 4F4EA0AAE5267A6C
-RUN echo "deb http://nginx.org/packages/ubuntu/ trusty nginx" >> /etc/apt/sources.list
-RUN echo "deb-src http://nginx.org/packages/ubuntu/ trusty nginx" >> /etc/apt/sources.list
-RUN apt-get update
-
 RUN apt-get install -y nginx
 
 ADD docker/default /etc/nginx/sites-enabled/
